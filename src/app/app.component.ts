@@ -7,6 +7,7 @@ import { MatMenuTrigger } from '@angular/material';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  @ViewChild('lineChart') private chartRef;    
+  chart: any;
 
 }
