@@ -10,13 +10,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { DataDynamicComponent } from './data-dynamic/data-dynamic.component';
 import { LgpubComponent } from './lgpub/lgpub.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GraphDisplayComponent,
     DataDynamicComponent,
-    LgpubComponent
+    LgpubComponent,
+    HomeComponent
   ],
   imports: [
     MatButtonModule,
