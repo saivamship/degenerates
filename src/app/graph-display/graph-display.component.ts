@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BaseChartDirective, Label, Color } from 'ng2-charts';
+import { MatSelectChange } from '@angular/material';
 
 @Component({
   selector: 'app-graph-display',
@@ -6,10 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./graph-display.component.scss']
 })
 export class GraphDisplayComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

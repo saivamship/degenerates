@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import * as Chart from 'chart.js';
-import { Label, Color, BaseChartDirective } from 'ng2-charts';
+import { BaseChartDirective, Label, Color } from 'ng2-charts';
 import { MatSelectChange } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 
@@ -23,11 +22,11 @@ const mockTest3Data = [22, 95, 92, 67, 11, 95, 6, 31, 84, 8];
 const mockTest4Data = [43, 60, 58, 70, 6, 55, 70, 71, 49, 95];
 
 @Component({
-  selector: 'app-lgpub',
-  templateUrl: './lgpub.component.html',
-  styleUrls: ['./lgpub.component.sass']
+  selector: 'app-cets-portal',
+  templateUrl: './cets-portal.component.html',
+  styleUrls: ['./cets-portal.component.sass']
 })
-export class LgpubComponent implements OnInit {
+export class CetsPortalComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
 
   // LINE CHART DATA SETUP

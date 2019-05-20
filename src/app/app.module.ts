@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatButtonModule, MatCheckboxModule, MatMenuModule, MatRadioButton, MatRadioModule } from '@angular/material';
-import { Chart } from 'chart.js';
+import { MatButtonModule, MatCheckboxModule, MatMenuModule, MatRadioModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { GraphDisplayComponent } from './graph-display/graph-display.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DataDynamicComponent } from './data-dynamic/data-dynamic.component';
 import { LgpubComponent } from './lgpub/lgpub.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HomeComponent } from './home/home.component';
+import { CetsPortalComponent } from './cets-portal/cets-portal.component';
+import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     GraphDisplayComponent,
     DataDynamicComponent,
     LgpubComponent,
-    HomeComponent
+    HomeComponent,
+    CetsPortalComponent,
   ],
   imports: [
     MatButtonModule,
@@ -27,12 +30,16 @@ import { HomeComponent } from './home/home.component';
     MatTabsModule,
     BrowserAnimationsModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     MatRadioModule,
     AppRoutingModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    ChartsModule,
+    MatSelectModule,
+    MatFormFieldModule,
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
