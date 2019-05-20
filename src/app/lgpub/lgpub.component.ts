@@ -25,7 +25,7 @@ const mockTest4Data = [43, 60, 58, 70, 6, 55, 70, 71, 49, 95];
 @Component({
   selector: 'app-lgpub',
   templateUrl: './lgpub.component.html',
-  styleUrls: ['./lgpub.component.sass']
+  styleUrls: ['./lgpub.component.scss']
 })
 export class LgpubComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;

@@ -1,6 +1,6 @@
 <div class="data-dynamic-container">
-    <div class="canvas-container" style="display: block;">
-      <canvas baseChart width="1080" height="400"
+    <div class="canvas-container" style="display: block; margin-top:25px;">
+      <canvas baseChart width="1080" height="300"
         [datasets]="lineChartData"
         [labels]="lineChartLabels"
         [options]="lineChartOptions"
@@ -13,14 +13,14 @@
     </div>
 
     <div class='axis-select-container'>
-      <!-- <mat-form-field>
+      <mat-form-field>
         <mat-label>Value in X-Axis</mat-label>
-        <mat-select [(value)]="selectedX" (selectionChange)="selectionChangeX($event)">
-          <mat-option *ngFor="let data of xDataList" [value]="data.value">
+        <mat-select [(value)]="selectedY" (selectionChange)="selectionChangeY($event)">
+          <mat-option *ngFor="let data of yDataList" [value]="data.value">
             {{data.label}}
           </mat-option>
         </mat-select>
-      </mat-form-field> -->
+      </mat-form-field>
 
       <mat-form-field>
         <mat-label>Value in Y-Axis</mat-label>
@@ -30,12 +30,88 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <button class="download"> Download</button>
     </div>
-
+<!-- 
     <ag-grid-angular class="ag-theme-balham-dark"
       style="width: 500px; height: 500px;"
       class="ag-theme-balham"
       [rowData]="rowData"
       [columnDefs]="columnDefs">
-    </ag-grid-angular>
+    </ag-grid-angular> -->
+  </div>
+
+  <div class="dashboard">
+    <!-- <div class="dashboard--item">
+      <div class="dashboard--description">Statistikk</div>
+      <div class="dashboard--data">
+        <div class="dashboard--data--numbers">
+          13,652
+        </div> 
+        <div class="dashboard--data--additional">
+          <span class="color__positive">+34%</span> siste 30 dagene
+        </div>
+      </div>
+      <div class="dashboard--widget-bar">
+        <div class="dashboard--title">
+          Visitors
+        </div>
+        <div class="dashboard--setting">s</div>
+      </div>
+    </div>
+    <div class="dashboard--item double"></div> -->
+    <div class="dashboard--item">
+      <div class="dashboard--description">Statistikk</div>
+      <div class="dashboard--data">
+        <div class="dashboard--data--numbers">
+          13,652
+        </div> 
+        <div class="dashboard--data--additional">
+          <span class="color__positive">+34%</span> siste 30 dagene
+        </div>
+      </div>
+      <div class="dashboard--widget-bar">
+        <div class="dashboard--title">
+          Visitors
+        </div>
+        <div class="dashboard--setting">s</div>
+      </div>
+    </div>
+    <div class="dashboard--item">
+      <div class="dashboard--description">Statistikk</div>
+      <div class="dashboard--data">
+        <div class="dashboard--data--numbers">
+          13,652
+        </div> 
+        <div class="dashboard--data--additional">
+          <span class="color__positive">+34%</span> siste 30 dagene
+        </div>
+      </div>
+      <div class="dashboard--widget-bar">
+        <div class="dashboard--title">
+          Visitors
+        </div>
+        <div class="dashboard--setting">s</div>
+      </div>
+    </div>
+    <div class="dashboard--item"></div>
+    <div class="dashboard--item"></div>
+    <div class="dashboard--item">
+      <div class="dashboard--description">Statistikk</div>
+      <div class="dashboard--data">
+        <div class="dashboard--data--numbers">
+          13,652
+        </div> 
+        <div class="dashboard--data--additional">
+          <span class="color__positive">+34%</span> siste 30 dagene
+        </div>
+      </div>
+      <div class="dashboard--widget-bar">
+        <div class="dashboard--title">
+          Visitors
+        </div>
+        <div class="dashboard--setting">s</div>
+      </div>
+    </div>
+    <div class="dashboard--item"></div>
   </div>

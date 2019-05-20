@@ -24,7 +24,7 @@ const mockTest4Data = [43, 60, 58, 70, 6, 55, 70, 71, 49, 95];
 @Component({
   selector: 'app-cets-portal',
   templateUrl: './cets-portal.component.html',
-  styleUrls: ['./cets-portal.component.sass']
+  styleUrls: ['./cets-portal.component.scss']
 })
 export class CetsPortalComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;

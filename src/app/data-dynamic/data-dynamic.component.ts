@@ -24,7 +24,7 @@ const mockTest4Data = [43, 60, 58, 70, 6, 55, 70, 71, 49, 95];
 @Component({
   selector: 'app-data-dynamic',
   templateUrl: './data-dynamic.component.html',
-  styleUrls: ['./data-dynamic.component.sass']
+  styleUrls: ['./data-dynamic.component.scss']
 })
 export class DataDynamicComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
