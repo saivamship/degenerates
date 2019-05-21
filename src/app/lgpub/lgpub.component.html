@@ -28,7 +28,7 @@
       <button class="download"> Download</button>
 
   </div>
-  <!-- 
+  <!--
   <ag-grid-angular class="ag-theme-balham-dark"
     style="width: 500px; height: 500px;"
     class="ag-theme-balham"
@@ -37,13 +37,82 @@
   </ag-grid-angular> -->
 </div>
 
+<div class="dashboard-analytics">
+  <div class="col-md-2 key-analytic-one">
+    <h3>{{loanPerformancePayload[0].statName}}</h3>
+    <h4><i class="fas fa-caret-up"></i>  {{loanPerformancePayload[0].statValue}}</h4>
+    <h5>{{loanPerformancePayload[0].statUpdate}}</h5>
+  </div>
+  <div class="col-md-2 stat-analytic">
+    <div class="row">
+      <div class="col-md-12 stat-analytic--one">
+        <h3>{{loanPerformancePayload[1].statValue}}</h3>
+        <h5>{{loanPerformancePayload[1].statName}}</h5>
+        <p>{{loanPerformancePayload[1].statUpdate}}</p>
+      </div>
+      <div class="col-md-12 stat-analytic--two">
+        <h3>{{loanPerformancePayload[2].statValue}}</h3>
+        <h5>{{loanPerformancePayload[2].statName}}</h5>
+        <p>{{loanPerformancePayload[2].statUpdate}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 stat-analytic">
+    <div class="row">
+      <div class="col-md-12 stat-analytic--one">
+        <h3>{{loanPerformancePayload[3].statValue}}</h3>
+        <h5>{{loanPerformancePayload[3].statName}}</h5>
+        <p>{{loanPerformancePayload[3].statUpdate}}</p>
+      </div>
+      <div class="col-md-12 stat-analytic--two">
+        <h3>{{loanPerformancePayload[4].statValue}}</h3>
+        <h5>{{loanPerformancePayload[4].statName}}</h5>
+        <p>{{loanPerformancePayload[4].statUpdate}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 stat-analytic">
+    <div class="row">
+      <div class="col-md-12 stat-analytic--one">
+        <h3>{{loanPerformancePayload[5].statValue}}</h3>
+        <h5>{{loanPerformancePayload[5].statName}}</h5>
+        <p>{{loanPerformancePayload[5].statUpdate}}</p>
+      </div>
+      <div class="col-md-12 stat-analytic--two">
+        <h3>{{loanPerformancePayload[6].statValue}}</h3>
+        <h5>{{loanPerformancePayload[6].statName}}</h5>
+        <p>{{loanPerformancePayload[6].statUpdate}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 key-analytic-two">
+    <h3>{{loanPerformancePayload[7].statName}}</h3>
+    <h4><i class="fas fa-caret-up"></i> {{loanPerformancePayload[7].statValue}}</h4>
+    <h5>{{loanPerformancePayload[7].statUpdate}}</h5>
+  </div>
+  <div class="col-md-2 stat-analytic">
+    <div class="row">
+      <div class="col-md-12 stat-analytic--one">
+        <h3>{{loanPerformancePayload[8].statValue}}</h3>
+        <h5>{{loanPerformancePayload[8].statName}}</h5>
+        <p>{{loanPerformancePayload[8].statUpdate}}</p>
+      </div>
+      <div class="col-md-12 stat-analytic--two">
+        <h3>{{loanPerformancePayload[9].statValue}}</h3>
+        <h5>{{loanPerformancePayload[9].statName}}</h5>
+        <p>{{loanPerformancePayload[9].statUpdate}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="dashboard">
   <!-- <div class="dashboard--item">
     <div class="dashboard--description">Statistikk</div>
     <div class="dashboard--data">
       <div class="dashboard--data--numbers">
         13,652
-      </div> 
+      </div>
       <div class="dashboard--data--additional">
         <span class="color__positive">+34%</span> siste 30 dagene
       </div>

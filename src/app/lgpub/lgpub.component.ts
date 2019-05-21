@@ -30,9 +30,87 @@ const mockTest4Data = [43, 60, 58, 70, 6, 55, 70, 71, 49, 95];
 export class LgpubComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
 
+  public loanPerformancePayload = [
+    {
+      statName: 'Average Stat',
+      statValue: '0.35%',
+      statUpdate: 'since last month',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+    },
+    {
+      statName: 'Foreclosure Costs',
+      statValue: '21',
+      statUpdate: '(5% up from Q2)',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+    },
+    {
+      statName: 'Net Sales Proceeds',
+      statValue: '23',
+      statUpdate: '(5% up from Q2)',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+
+    },
+    {
+      statName: 'Net Sales Proceeds',
+      statValue: '3',
+      statUpdate: '(5% up from Q2)',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+
+    },
+    {
+      statName: 'Net Sales Proceeds',
+      statValue: '94',
+      statUpdate: '(5% up from Q2)',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+
+    },
+    {
+      statName: 'Net Sales Proceeds',
+      statValue: '32',
+      statUpdate: '(5% up from Q2)',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+
+    },
+    {
+      statName: 'Net Sales Proceeds',
+      statValue: '54',
+      statUpdate: '(5% up from Q2)',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+
+    },
+    {
+      statName: 'Net Sales Proceeds',
+      statValue: '.067%',
+      statUpdate: '(5% up from Q2)',
+      statMonthIncrements: [32, 21, 23, 32, 33, 36, 38, 43, 46, 93]
+    },
+    {
+      statName: 'Net Sales Proceeds',
+      statValue: '5',
+      statUpdate: '(5% up from Q2)',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+
+    },
+    {
+      statName: 'Net Sales Proceeds',
+      statValue: '5',
+      statUpdate: '(5% up from Q2)',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+    },
+  ];
+
   // LINE CHART DATA SETUP
   public lineChartData: Chart.ChartDataSets[] = [
-    { data: mockTest1Data, label: 'test1' }
+    {
+      data: this.loanPerformancePayload[0].statMonthIncrements,
+      label: this.loanPerformancePayload[0].statName,
+      backgroundColor: '#20b2aa'
+    },
+    {
+      data: this.loanPerformancePayload[7].statMonthIncrements,
+      label: this.loanPerformancePayload[7].statName,
+      backgroundColor: '#FA8072'
+    }
   ];
   public lineChartLabels: Label[] = mockTimeData;
   public lineChartOptions: Chart.ChartOptions = {
