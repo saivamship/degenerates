@@ -13,7 +13,11 @@ import { HomeComponent } from './home/home.component';
 import { CetsPortalComponent } from './cets-portal/cets-portal.component';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { DownloadComponent } from './download/download.component';
 // import {MatButtonModule} from '@angular/material/button';
+import {MatExpansionModule} from '@angular/material/expansion';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +26,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     LgpubComponent,
     HomeComponent,
     CetsPortalComponent,
+    DownloadComponent,
   ],
   imports: [
     MatButtonModule,
@@ -38,6 +43,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     ChartsModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatExpansionModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
