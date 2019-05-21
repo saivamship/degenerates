@@ -46,12 +46,12 @@
   <div class="col-md-2 stat-analytic">
     <div class="row">
       <div class="col-md-12 stat-analytic--one">
-        <h3>{{loanPerformancePayload[1].statValue}}</h3>
+        <h3><i class="fas fa-circle" style="font-size: 10px;"></i>  {{loanPerformancePayload[1].statValue}}</h3>
         <h5>{{loanPerformancePayload[1].statName}}</h5>
         <p>{{loanPerformancePayload[1].statUpdate}}</p>
       </div>
       <div class="col-md-12 stat-analytic--two">
-        <h3>{{loanPerformancePayload[2].statValue}}</h3>
+        <h3><i class="fas fa-circle" style="font-size: 10px;"></i>  {{loanPerformancePayload[2].statValue}}</h3>
         <h5>{{loanPerformancePayload[2].statName}}</h5>
         <p>{{loanPerformancePayload[2].statUpdate}}</p>
       </div>
@@ -60,28 +60,14 @@
   <div class="col-md-2 stat-analytic">
     <div class="row">
       <div class="col-md-12 stat-analytic--one">
-        <h3>{{loanPerformancePayload[3].statValue}}</h3>
+        <h3><i class="fas fa-circle" style="font-size: 10px;"></i>  {{loanPerformancePayload[3].statValue}}</h3>
         <h5>{{loanPerformancePayload[3].statName}}</h5>
         <p>{{loanPerformancePayload[3].statUpdate}}</p>
       </div>
       <div class="col-md-12 stat-analytic--two">
-        <h3>{{loanPerformancePayload[4].statValue}}</h3>
+        <h3><i class="fas fa-circle" style="font-size: 10px;"></i>  {{loanPerformancePayload[4].statValue}}</h3>
         <h5>{{loanPerformancePayload[4].statName}}</h5>
         <p>{{loanPerformancePayload[4].statUpdate}}</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-2 stat-analytic">
-    <div class="row">
-      <div class="col-md-12 stat-analytic--one">
-        <h3>{{loanPerformancePayload[5].statValue}}</h3>
-        <h5>{{loanPerformancePayload[5].statName}}</h5>
-        <p>{{loanPerformancePayload[5].statUpdate}}</p>
-      </div>
-      <div class="col-md-12 stat-analytic--two">
-        <h3>{{loanPerformancePayload[6].statValue}}</h3>
-        <h5>{{loanPerformancePayload[6].statName}}</h5>
-        <p>{{loanPerformancePayload[6].statUpdate}}</p>
       </div>
     </div>
   </div>
@@ -93,12 +79,26 @@
   <div class="col-md-2 stat-analytic">
     <div class="row">
       <div class="col-md-12 stat-analytic--one">
-        <h3>{{loanPerformancePayload[8].statValue}}</h3>
+        <h3><i class="fas fa-circle" style="font-size: 10px;"></i>  {{loanPerformancePayload[5].statValue}}</h3>
+        <h5>{{loanPerformancePayload[5].statName}}</h5>
+        <p>{{loanPerformancePayload[5].statUpdate}}</p>
+      </div>
+      <div class="col-md-12 stat-analytic--two">
+        <h3><i class="fas fa-circle" style="font-size: 10px;"></i>  {{loanPerformancePayload[6].statValue}}</h3>
+        <h5>{{loanPerformancePayload[6].statName}}</h5>
+        <p>{{loanPerformancePayload[6].statUpdate}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 stat-analytic">
+    <div class="row">
+      <div class="col-md-12 stat-analytic--one">
+        <h3><i class="fas fa-circle" style="font-size: 10px;"></i>  {{loanPerformancePayload[8].statValue}}</h3>
         <h5>{{loanPerformancePayload[8].statName}}</h5>
         <p>{{loanPerformancePayload[8].statUpdate}}</p>
       </div>
       <div class="col-md-12 stat-analytic--two">
-        <h3>{{loanPerformancePayload[9].statValue}}</h3>
+        <h3><i class="fas fa-circle" style="font-size: 10px;"></i>  {{loanPerformancePayload[9].statValue}}</h3>
         <h5>{{loanPerformancePayload[9].statName}}</h5>
         <p>{{loanPerformancePayload[9].statUpdate}}</p>
       </div>
@@ -106,7 +106,73 @@
   </div>
 </div>
 
+<div class="dashboard-table" style="padding-bottom: 30px;">
+  <div class="col-md-12 dashboard-table--border"></div>
+  <div class="col-md-12 dashboard-table--header">
+    <div class="col-md-4" style="text-align: right; padding-top: 20px;">
+       Overview
+    </div>
+  </div>
+
+  <div class="col-md-12 dashboard-table--header">
+    <div class="col-md-4" style="text-align: right; font-size: 20px; font-weight: 300;">
+        <p>First Quarter Results <i class="fas fa-download"></i></p>
+        <p style="font-size: 12px;"><i style="color: 	#009246;" class="fas fa-clock"></i> Updated 20 May, 2019</p>
+    </div>
+  </div>
+
+  <div class="table-header">
+    <div class="col-md-4" style="text-align: right;">
+        <i class="fas fa-info-circle"></i> FIELD NAME
+    </div>
+    <div class="col-md-1" style="text-align: right;">
+        <i class="fas fa-dollar-sign"></i> VALUE
+    </div>
+    <div class="col-md-1" style="text-align: right;">
+        <i class="fas fa-chart-line"></i> CHANGE
+    </div>
+    <div class="col-md-1" style="text-align: right;">
+      %CHANGE
+    </div>
+    <div class="col-md-1" style="text-align: right;">
+        <i class="fas fa-burn"></i> HIGH
+    </div>
+    <div class="col-md-1" style="text-align: right;">
+        <i class="fas fa-poo"></i> LOW
+    </div>
+  </div>
+  <div class="row" style="padding-top: 10px;"></div>
+  <div *ngFor="let row of performanceFile" class="table-header overview-table-row">
+    <div class="col-md-4" style="text-align: right;">
+      {{row.statName}}
+    </div>
+    <div class="col-md-1" style="text-align: right;">
+      {{row.statValue}}
+    </div>
+    <div class="col-md-1" style="text-align: right;">
+      {{row.statChange}}
+    </div>
+    <div class="col-md-1" style="text-align: right;">
+      {{row.statChangePercent}}
+    </div>
+    <div class="col-md-1" style="text-align: right;">
+      {{row.statHigh}}
+    </div>
+    <div class="col-md-1" style="text-align: right;">
+      {{row.statLow}}
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12 dashboard-table--border"></div>
 <div class="dashboard">
+  <div class="col-md-12 dashboard-table--header">
+    <div class="col-md-4" style="text-align: right; padding-top: 20px;">
+      Loan Performace Averages
+      <p style="font-size: 20px; font-weight: 300;">First Quarter Results</p>
+      <p style="font-size: 12px; font-weight: 100;"><i style="color: 	#009246;" class="fas fa-clock"></i> Updated 20 May, 2019</p>
+    </div>
+  </div>
   <!-- <div class="dashboard--item">
     <div class="dashboard--description">Statistikk</div>
     <div class="dashboard--data">
@@ -126,57 +192,69 @@
   </div>
   <div class="dashboard--item double"></div> -->
   <div class="dashboard--item">
-    <div class="dashboard--description">Statistikk</div>
+    <div class="dashboard--description">Original Debt to Income Ratio</div>
     <div class="dashboard--data">
       <div class="dashboard--data--numbers">
-        13,652
+        $30,652
       </div>
       <div class="dashboard--data--additional">
-        <span class="color__positive">+34%</span> siste 30 dagene
+        <span class="color__positive">+34%</span> since Q2
       </div>
-    </div>
-    <div class="dashboard--widget-bar">
-      <div class="dashboard--title">
-        Visitors
-      </div>
-      <div class="dashboard--setting">s</div>
     </div>
   </div>
   <div class="dashboard--item">
-    <div class="dashboard--description">Statistikk</div>
+    <div class="dashboard--description">Original Debt to Income Ratio</div>
     <div class="dashboard--data">
       <div class="dashboard--data--numbers">
-        13,652
+        $30,652
       </div>
       <div class="dashboard--data--additional">
-        <span class="color__positive">+34%</span> siste 30 dagene
+        <span class="color__positive">+34%</span> since Q2
       </div>
-    </div>
-    <div class="dashboard--widget-bar">
-      <div class="dashboard--title">
-        Visitors
-      </div>
-      <div class="dashboard--setting">s</div>
     </div>
   </div>
-  <div class="dashboard--item"></div>
-  <div class="dashboard--item"></div>
   <div class="dashboard--item">
-    <div class="dashboard--description">Statistikk</div>
+    <div class="dashboard--description">Original Debt to Income Ratio</div>
     <div class="dashboard--data">
       <div class="dashboard--data--numbers">
-        13,652
+        $30,652
       </div>
       <div class="dashboard--data--additional">
-        <span class="color__positive">+34%</span> siste 30 dagene
+        <span class="color__positive">+34%</span> since Q2
       </div>
-    </div>
-    <div class="dashboard--widget-bar">
-      <div class="dashboard--title">
-        Visitors
-      </div>
-      <div class="dashboard--setting">s</div>
     </div>
   </div>
-  <div class="dashboard--item"></div>
+  <div class="dashboard--item">
+    <div class="dashboard--description">Original Debt to Income Ratio</div>
+    <div class="dashboard--data">
+      <div class="dashboard--data--numbers">
+        $30,652
+      </div>
+      <div class="dashboard--data--additional">
+        <span class="color__positive">+34%</span> since Q2
+      </div>
+    </div>
+  </div>
+  <div class="dashboard--item">
+    <div class="dashboard--description">Original Debt to Income Ratio</div>
+    <div class="dashboard--data">
+      <div class="dashboard--data--numbers">
+        $30,652
+      </div>
+      <div class="dashboard--data--additional">
+        <span class="color__positive">+34%</span> since Q2
+      </div>
+    </div>
+  </div>
+  <div class="dashboard--item">
+    <div class="dashboard--description">Original Debt to Income Ratio</div>
+    <div class="dashboard--data">
+      <div class="dashboard--data--numbers">
+        $30,652
+      </div>
+      <div class="dashboard--data--additional">
+        <span class="color__positive">+34%</span> since Q2
+      </div>
+    </div>
+  </div>
 </div>
