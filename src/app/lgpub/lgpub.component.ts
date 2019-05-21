@@ -99,6 +99,73 @@ export class LgpubComponent implements OnInit {
     },
   ];
 
+  public performanceFile = [
+    {
+      statName: 'Foreclosure Costs',
+      statValue: '$23,938',
+      statChange: '+.33',
+      statChangePercent: '+0.23%',
+      statHigh: '$26,234',
+      statLow: '$13,459'
+    },
+    {
+      statName: 'Assest Recovery Costs',
+      statValue: '$12,937',
+      statChange: '+.45',
+      statChangePercent: '+0.56%',
+      statHigh: '$32,473',
+      statLow: '$3,459'
+    },
+    {
+      statName: 'Principle Forgiveness Amount',
+      statValue: '$23,938',
+      statChange: '+.33',
+      statChangePercent: '+0.23%',
+      statHigh: '$26,234',
+      statLow: '$13,459'
+    },
+    {
+      statName: 'Credit Enhancement Proceeds',
+      statValue: '$23,938',
+      statChange: '+.33',
+      statChangePercent: '+0.23%',
+      statHigh: '$26,234',
+      statLow: '$13,459'
+    },
+    {
+      statName: 'Non Interest Bearing UPB',
+      statValue: '$23,938',
+      statChange: '+.33',
+      statChangePercent: '+0.23%',
+      statHigh: '$26,234',
+      statLow: '$13,459'
+    },
+    {
+      statName: 'Net Sale Proceeds',
+      statValue: '$23,938',
+      statChange: '+.33',
+      statChangePercent: '+0.23%',
+      statHigh: '$26,234',
+      statLow: '$13,459'
+    },
+    {
+      statName: 'Other Foreclosure Proceeds',
+      statValue: '$23,938',
+      statChange: '+.33',
+      statChangePercent: '+0.23%',
+      statHigh: '$26,234',
+      statLow: '$13,459'
+    },
+    {
+      statName: 'Adjusted Months to Maturity',
+      statValue: '6',
+      statChange: '+.33',
+      statChangePercent: '+0.23%',
+      statHigh: '12',
+      statLow: '2'
+    }
+  ];
+
   // LINE CHART DATA SETUP
   public lineChartData: Chart.ChartDataSets[] = [
     {
