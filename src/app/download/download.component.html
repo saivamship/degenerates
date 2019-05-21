@@ -1,0 +1,30 @@
+<div class="accordion-container">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          LPPUB
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="lppub container">
+        <div class="lppub download-item" *ngFor="let item of lppubList">
+          <div class="filename align-left">{{item}}</div>
+          <i class="fas fa-download download-icon align-right" (click)="downloadFile(item)"></i>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Data Dynamics
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="data-dynamics-body container">
+        <div class="data-dynamics download-item" *ngFor="let item of dataDynamicsList">
+          <div class="filename align-left">{{item}}</div>
+          <i class="fas fa-download download-icon align-right" (click)="downloadFile(item)"></i>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
