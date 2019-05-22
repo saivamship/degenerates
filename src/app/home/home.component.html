@@ -1,17 +1,28 @@
 <div class="background">
-
-
-  <!-- <h1 style="position: relative; top:150px; color: whitesmoke; text-align:center;"> Welcome to Data Warehouse</h1> -->
-
-  <h1 style="color: whitesmoke; text-align:center;margin-top:125px;"> Welcome to Data Warehouse</h1>
-
-  <p style="color: white; margin:20px 20% "> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-    of type and scrambled it to make a type specimen book. </p>
-
-  <div class="btn-default" style=" text-align: center;">
-    <!-- <button> Get Started</button> -->
-    <button class="btn btn-light" mat-button (click)="navigate()">Get Started</button>
-
+  <div class="background__title">
+      <img src="../../assets/images/fnmalogo.jpg" height="84" width="84">
+    <h5 style="color: #2a2a2a; font-weight: 300;">Fannie Mae | Data Warehouse</h5>
+    <h4 style="padding-top: 5px;">View, analyze or upload public Fannie Mae data all in one place.</h4>
   </div>
 </div>
+
+<div class="cards-row">
+  <div class="col-md-6">
+    <div class="cards-row__card-left" (click)="navigate()">
+      <img src="../../assets/images/undraw_data_report_bi6l.png" height="200" width="224">
+      <h4 style="font-size: 17px; color: #2a2a2a; font-weight: 300;">View Collection</h4>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="cards-row__card-right">
+      <img src="../../assets/images/undraw_add_file2_gvbb.png" height="200" width="224">
+      <h4 style="font-size: 17px; color: #2a2a2a; font-weight: 300;">Manage Data</h4>
+    </div>
+  </div>
+</div>
+
+<footer align="center">
+  <div class="menus">
+    <p>Fannie Mae © - 2019</p>
+  </div>
+</footer>
