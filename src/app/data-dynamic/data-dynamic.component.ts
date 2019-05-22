@@ -75,8 +75,16 @@ export class DataDynamicComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
   @ViewChild('agGrid') agGrid: AgGridNg2;
 
+  public rowData;
+
+  public totalUPB;
+
+  public UPBDelta;
+
   // LINE CHART DATA SETUP
-  public lineChartData: Chart.ChartDataSets[] = [{ data: null, label: null }];
+  public lineChartData: Chart.ChartDataSets[] = [
+    { data: this.totalUPB, label: 'Total UPB' }
+  ];
   public lineChartLabels: Label[];
   public lineChartOptions: Chart.ChartOptions = {
     responsive: false,
@@ -155,16 +163,6 @@ export class DataDynamicComponent implements OnInit {
       suppressSizeToFit: false
     }
   ];
-
-  onGridReady(params) {
-    console.log('Called');
-  }
-
-  public rowData;
-
-  public totalUPB;
-
-  public UPBDelta;
 
   constructor(private http: HttpClient) {}
 
@@ -288,7 +286,7 @@ export class DataDynamicComponent implements OnInit {
     active: {}[];
   }): void {}
 
-public chartHovered({
+  public chartHovered({
     event,
     active
   }: {
