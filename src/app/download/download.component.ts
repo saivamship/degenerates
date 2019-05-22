@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { saveAs }  from 'file-saver';
+// import { saveAs }  from 'file-saver';
 
 const mockDataDynamicsList = [ 'CIRT-2018-1.csv', 'CIRT-2018-2.csv', 'CIRT-2018-3.csv', 'CIRT-2018-4.csv', 'CIRT-2018-5.csv', 'CIRT-2018-6.csv' ]
 const mockLppubList = [ '2019-Q1-Acquistions.csv', '2019-Q1-Performance.csv', '2018-Q4-Acquistions.csv', '2018-Q4-Performance.csv', '2018-Q3-Acquistions.csv', '2018-Q3-Performance.csv', '2018-Q2-Acquistions.csv', '2018-Q2-Performance.csv', ]
@@ -20,12 +20,12 @@ export class DownloadComponent implements OnInit {
   ngOnInit() {
   }
 
-  downloadFile(filename) {
-    this.http.get('../../assets/files/CIRT-2018-1.csv', { responseType: 'text' }).subscribe(data =>{
-      console.log("data", data)
-      const blob = new Blob([data], { type: 'text/plain;charset=utf-8' });
-      saveAs(blob, filename);
-    });
-  }
+  // downloadFile(filename) {
+  //   this.http.get('../../assets/files/CIRT-2018-1.csv', { responseType: 'text' }).subscribe(data =>{
+  //     console.log("data", data)
+  //     const blob = new Blob([data], { type: 'text/plain;charset=utf-8' });
+  //     saveAs(blob, filename);
+  //   });
+  // }
 
 }

@@ -1,0 +1,39 @@
+<div class="ui-g">
+  <div class="ui-g-4" style="text-align: center">
+    <a (click)="handleBack()" routerLink="/graph-display" class="back-text">
+      ← Go Back </a>
+  </div>
+  <div class="ui-g-4">
+    <h2 style="text-align: center;"> Submit Data</h2>
+  </div>
+  <div class="ui-g-4">
+  </div>
+  <form [formGroup]=" userForm">
+    <p>First Name:</p>
+    <input type="text" formControlName="firstName" pInputText>
+    Last Name:
+    <input type="text" formControlName="lastName" pInputText>
+
+    Title
+    <input type="text" formControlName="lastName" pInputText>
+
+    <br>
+    <br>
+    <p-fileUpload customUpload="true" (uploadHandler)="onUpload($event)" name="myfile[]" url="./upload.php">
+    </p-fileUpload>
+
+    <!-- <button type="submit" (click)="Submit()" [disabled]="!userForm.valid">Submit</button> -->
+    <button mat-stroked-button type="submit" (click)="Submit()" [disabled]="!userForm.valid">Basic</button>
+  </form>
+  <div *ngIf="uploadedFiles">
+    <p> These are the files you plan on uploading. </p>
+  </div>
+
+  <div *ngFor="let file of uploadedFiles">
+    {{file.name}}
+
+
+  </div>
+
+
+</div>

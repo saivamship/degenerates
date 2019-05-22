@@ -15,9 +15,14 @@ import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { DownloadComponent } from './download/download.component';
 // import {MatButtonModule} from '@angular/material/button';
-import {MatExpansionModule} from '@angular/material/expansion';
-
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { UploadComponent } from './upload/upload.component';
+import { AdminComponent } from './admin/admin.component';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ButtonModule, InputTextModule, DataTableModule, DialogModule, MenuModule } from 'primeng/primeng';
+// import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MockDataComponent } from './mock-data/mock-data.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,8 +32,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
     HomeComponent,
     CetsPortalComponent,
     DownloadComponent,
+    UploadComponent,
+    AdminComponent,
+    MockDataComponent
   ],
   imports: [
+    FileUploadModule,
+    FormsModule,
     MatButtonModule,
     MatMenuModule,
     MatCheckboxModule,
@@ -44,6 +54,15 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatSelectModule,
     MatFormFieldModule,
     MatExpansionModule,
+    ReactiveFormsModule,
+    ButtonModule,
+
+    InputTextModule,
+    DataTableModule,
+    ButtonModule,
+    DialogModule
+    // MenuModule
+
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
