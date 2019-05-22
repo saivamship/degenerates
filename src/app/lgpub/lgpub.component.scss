@@ -46,6 +46,26 @@ margin: 0;
     width: 64%
   }
 }
+
+&--item:hover{
+  width: 31%;
+  margin: 1%;
+  float: left;
+  padding: 1em;
+  height: 250px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 0 #E2E2E2;
+  // background-color: white;
+  border: 1px solid #DBDBDB;
+  color: #ccc;
+  padding-bottom: 34px;
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+  position: relative;
+  cursor: pointer;
+  &.double{
+    width: 64%
+  }
+}
 &--description {
   padding-bottom: 2em;
   display: block;
@@ -142,6 +162,27 @@ margin: 0;
   color: #ffffff;
 }
 
+.key-analytic-one:hover {
+  height: 200px;
+  background-color: #f1f1f1
+  ;
+  text-align: center;
+  padding-top: 50px;
+  color: #05314d;
+  cursor: pointer;
+  position: relative;
+}
+
+.key-analytic-two:hover {
+  height: 200px;
+  background-color: #f1f1f1;
+  text-align: center;
+  padding-top: 50px;
+  color: #05314d;
+  cursor: pointer;
+  position: relative;
+}
+
 .stat-analytic {
   height: 200px;
   background-color: #f1f1f1;
@@ -160,6 +201,19 @@ margin: 0;
     border-width: 1px 1px 1px 0;
     border-style: solid;
     border-color: #d7d7d7;
+  }
+
+  &--one:hover {
+    height: 100px;
+    color: #ffffff;
+    background-color: #05314d;
+    cursor: pointer;
+  }
+  &--two:hover {
+    height: 100px;
+    color: #ffffff;
+    background-color: #05314d;
+    cursor: pointer;
   }
 }
 
