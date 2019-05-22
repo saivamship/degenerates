@@ -11,20 +11,16 @@ import { StoreService } from '../store.service';
 })
 export class GraphDisplayComponent implements OnInit {
   constructor(private store: StoreService) { }
-  // nancy: boolean = false;
   tabs = [];
-  // tabs: any = [];
+
   ngOnInit() {
-
-
+    
     if (this.store.fileList) {
-
       this.store.fileList.forEach(el => {
-
-        this.tabs.push(el.name)
+        this.tabs.push(el);
       });
-
     }
+
 
   }
 }

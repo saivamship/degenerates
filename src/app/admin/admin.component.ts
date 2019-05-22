@@ -36,16 +36,15 @@ export class AdminComponent implements OnInit {
   }
 
   onUpload(event) {
-    this.buttonDisabled = false;
+    this.buttonDisabled = true;
     for (let file of event.files) {
       this.uploadedFiles.push(file);
-      this.storeService.fileList.push(file.name)
     }
   }
 
   submit() {
-    this.storeService.fileList = this.uploadedFiles;
-       this.router.navigate(['/graph-display'])
+    this.storeService.fileList.push(this.userForm.value.fileName);
+    this.router.navigate(['/graph-display'])
   }
 
 

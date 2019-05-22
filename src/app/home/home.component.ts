@@ -17,4 +17,9 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/graph-display']);
   }
 
+
+  navigateAdmin() {
+    this.router.navigate(['/admin']);
+  }
+
 }
