@@ -1,6 +1,9 @@
 <div class="data-dynamic-container">
   <div class="canvas-container" style="display: block; margin-top:25px;">
-    <canvas baseChart width="1080" height="300"
+    <canvas
+      baseChart
+      width="1080"
+      height="300"
       [datasets]="lineChartData"
       [labels]="lineChartLabels"
       [options]="lineChartOptions"
@@ -8,28 +11,35 @@
       [legend]="lineChartLegend"
       [chartType]="lineChartType"
       (chartHover)="chartHovered($event)"
-      (chartClick)="chartClicked($event)">
+      (chartClick)="chartClicked($event)"
+    >
     </canvas>
   </div>
 
-  <div class='axis-select-container'>
+  <div class="axis-select-container">
     <mat-form-field>
       <mat-label>Value in Y-Axis</mat-label>
-      <mat-select [(value)]="selectedY" (selectionChange)="selectionChangeY($event)">
+      <mat-select
+        [(value)]="selectedY"
+        (selectionChange)="selectionChangeY($event)"
+      >
         <mat-option *ngFor="let data of yDataList" [value]="data.value">
-          {{data.label}}
+          {{ data.label }}
         </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
 
   <div class="grid-container">
-    <ag-grid-angular class="ag-theme-balham-dark grid"
-      style="width: 80%; height: 500px; display: inline-block"
+    <ag-grid-angular
+      class="ag-theme-balham-dark grid"
+      style="width: 90%; height: 500px; display: inline-block"
       class="ag-theme-balham"
       [rowData]="rowData"
-      [columnDefs]="columnDefs">
+      [columnDefs]="columnDefs"
+      (gridReady)="onGridReady($event)"
+      #agGrid
+    >
     </ag-grid-angular>
   </div>
-
 </div>
