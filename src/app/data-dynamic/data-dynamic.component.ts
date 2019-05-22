@@ -76,10 +76,8 @@ export class DataDynamicComponent implements OnInit {
   @ViewChild('agGrid') agGrid: AgGridNg2;
 
   // LINE CHART DATA SETUP
-  public lineChartData: Chart.ChartDataSets[] = [
-    { data: mockTest1Data, label: 'Total UPB' }
-  ];
-  public lineChartLabels: Label[] = mockTimeData;
+  public lineChartData: Chart.ChartDataSets[] = [{ data: null, label: null }];
+  public lineChartLabels: Label[];
   public lineChartOptions: Chart.ChartOptions = {
     responsive: false,
     scales: {
@@ -115,7 +113,7 @@ export class DataDynamicComponent implements OnInit {
   // Y-AXIS SELECT DROPDOWN OPTIONS
   public yDataList = [
     { label: 'Total UPB', value: 'totalUPB' },
-    { label: 'UPB Delta', value: 'UPBDelta' },
+    { label: 'UPB Delta', value: 'UPBDelta' }
   ];
   public selectedY;
 
@@ -172,7 +170,7 @@ export class DataDynamicComponent implements OnInit {
 
   ngOnInit() {
     // this.selectedX = 'test1';
-    this.selectedY = 'totalUPB';
+    // this.selectedY = 'totalUPB';
 
     this.http.get('http://localhost:5000/creditrisk/fetchLGTime').subscribe(
       (resp: Label[]) => {
@@ -186,11 +184,10 @@ export class DataDynamicComponent implements OnInit {
     );
 
     this.http.get('http://localhost:5000/creditrisk/deals-agg').subscribe(
-      response => {
-        console.log('Y data resposne', response);
-        const responseValues = Object.values(response);
-        responseValues.forEach(values => values * 100);
-        this.totalUPB = responseValues;
+      (response: any) => {
+        console.log('Y data response', response);
+        this.totalUPB = Object.values(JSON.parse(response));
+        console.log('On Call' + this.totalUPB);
       },
       error => {
         console.log('ERROR when /creditrisk/deals-agg');
@@ -198,17 +195,19 @@ export class DataDynamicComponent implements OnInit {
       }
     );
 
-    this.http.get('http://localhost:5000/creditrisk/deals-perccent-agg').subscribe(
-      response => {
-        console.log('Y data resposne', response);
-        const responseValues = Object.values(response);
-        this.UPBDelta = responseValues;
-      },
-      error => {
-        console.log('ERROR when /creditrisk/deals-agg');
-        this.UPBDelta = mockTest2Data;
-      }
-    );
+    this.http
+      .get('http://localhost:5000/creditrisk/deals-percent-agg')
+      .subscribe(
+        (response: any) => {
+          console.log('Y data response', response);
+          this.UPBDelta = Object.values(JSON.parse(response));
+          console.log('On Call' + this.UPBDelta);
+        },
+        error => {
+          console.log('ERROR when /creditrisk/deals-percent-agg');
+          this.UPBDelta = mockTest2Data;
+        }
+      );
 
     this.http
       .get(
@@ -217,7 +216,7 @@ export class DataDynamicComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log('Column Response', response);
-          this.rowData = JSON.parse(response);
+          this.rowData = Object.values(JSON.parse(response));
           this.agGrid.api.sizeColumnsToFit();
         },
         error => {
@@ -225,27 +224,6 @@ export class DataDynamicComponent implements OnInit {
           this.rowData = mockRowData;
         }
       );
-  }
-
-  // LINE CHART EVENTS FUNCTIONS
-  public chartClicked({
-    event,
-    active
-  }: {
-    event: MouseEvent;
-    active: {}[];
-  }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({
-    event,
-    active
-  }: {
-    event: MouseEvent;
-    active: {}[];
-  }): void {
-    console.log(event, active);
   }
 
   // Dropdown Selection Change Event Functions
@@ -277,6 +255,8 @@ export class DataDynamicComponent implements OnInit {
 
   public selectionChangeY(event: MatSelectChange) {
     console.log('Y selection changed', event);
+    console.log(this.totalUPB);
+    console.log(this.UPBDelta);
     switch (event.value) {
       case 'totalUPB': {
         this.lineChartData = [
@@ -290,12 +270,29 @@ export class DataDynamicComponent implements OnInit {
       case 'UPBDelta': {
         this.lineChartData = [
           {
-            data: mockTest2Data,
-            label: 'test2'
+            data: this.UPBDelta,
+            label: 'UPB Delta'
           }
         ];
         break;
       }
     }
   }
+
+  // LINE CHART EVENTS FUNCTIONS
+  public chartClicked({
+    event,
+    active
+  }: {
+    event: MouseEvent;
+    active: {}[];
+  }): void {}
+
+public chartHovered({
+    event,
+    active
+  }: {
+    event: MouseEvent;
+    active: {}[];
+  }): void {}
 }
