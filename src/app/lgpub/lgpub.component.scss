@@ -93,9 +93,11 @@ margin: 0;
   font-size: 3em;
   color: #454545;
   font-weight: bold;
+
 }
 &--additional{
-
+  color: #151515;
+  padding-bottom: 10px;
 }
 }
 
@@ -119,6 +121,9 @@ margin: 0;
   background-color: red;
   display: flex;
   color: black;
+  margin-right: 15%;
+  margin-left: 15%;
+
 }
 
 .key-analytic-one {
@@ -131,7 +136,7 @@ margin: 0;
 
 .key-analytic-two {
   height: 200px;
-  background-color: 	#008080;
+  background-color: 	#05314d;
   text-align: center;
   padding-top: 50px;
   color: #ffffff;
@@ -184,4 +189,9 @@ margin: 0;
 
 .overview-table-row:hover {
   background-color: #f2f2f2;
+}
+
+.color-positive {
+  color: black;
+  background-color: #9cf4dc;
 }
