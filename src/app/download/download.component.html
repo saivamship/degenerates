@@ -16,11 +16,25 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Data Dynamics
+          Credit Risk Insurance Portal
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="data-dynamics-body container">
         <div class="data-dynamics download-item" *ngFor="let item of dataDynamicsList">
+          <div class="filename align-left">{{item}}</div>
+          <i class="fas fa-download download-icon align-right" (click)="downloadFile(item)"></i>
+        </div>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          DUS Disclosure
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="data-dynamics-body container">
+        <div class="data-dynamics download-item" *ngFor="let item of disclosureList">
           <div class="filename align-left">{{item}}</div>
           <i class="fas fa-download download-icon align-right" (click)="downloadFile(item)"></i>
         </div>
