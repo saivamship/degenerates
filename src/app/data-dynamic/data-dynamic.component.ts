@@ -16,10 +16,16 @@ const mockTimeData = [
   'Apr 2018'
 ];
 
-const mockTest1Data = [65, 59, 80, 81, 56, 55, 40, 42, 78, 82];
+const mockTest1Data = [16988605373, 15321053731, 14691352555, 13413482555, 11478216540, 11060459029, 10929616298, 9453556487, 8743556487, 7833556487];
 const mockTest2Data = [23, 34, 30, 91, 98, 55, 35, 8, 14, 72];
 const mockTest3Data = [22, 95, 92, 67, 11, 95, 6, 31, 84, 8];
 const mockTest4Data = [43, 60, 58, 70, 6, 55, 70, 71, 49, 95];
+
+const mockRowData =  [
+  { 'LOANIDENTIFIER': '37262251', 'SELLERNAME': 'Fannie Mae', 'SERVICERNAME': '', 'ORIGINALINTERESTRATE': '3.8750', 'CURRENTINTERESTRATE': '', 'ORIGINALLOANTOVALUERATIO': '80', 'ORIGINALCOMBINEDLOANTOVALUERATIO': '80', 'TOTALPRINCIPALCURRENT': '44454.27' },
+  { 'LOANIDENTIFIER': '37262252', 'SELLERNAME': 'Fannie Mae', 'SERVICERNAME': '', 'ORIGINALINTERESTRATE': '3.8750', 'CURRENTINTERESTRATE': '', 'ORIGINALLOANTOVALUERATIO': '80', 'ORIGINALCOMBINEDLOANTOVALUERATIO': '80', 'TOTALPRINCIPALCURRENT': '44454.27' },
+  { 'LOANIDENTIFIER': '37262253', 'SELLERNAME': 'Fannie Mae', 'SERVICERNAME': '', 'ORIGINALINTERESTRATE': '3.8750', 'CURRENTINTERESTRATE': '', 'ORIGINALLOANTOVALUERATIO': '80', 'ORIGINALCOMBINEDLOANTOVALUERATIO': '80', 'TOTALPRINCIPALCURRENT': '44454.27' },
+];
 
 @Component({
   selector: 'app-data-dynamic',
@@ -31,7 +37,7 @@ export class DataDynamicComponent implements OnInit {
 
   // LINE CHART DATA SETUP
   public lineChartData: Chart.ChartDataSets[] = [
-    { data: mockTest1Data, label: 'test1' }
+    { data: mockTest1Data, label: 'Total UPB' }
   ];
   public lineChartLabels: Label[] = mockTimeData;
   public lineChartOptions: Chart.ChartOptions = {
@@ -67,7 +73,7 @@ export class DataDynamicComponent implements OnInit {
 
   // Y-AXIS SELECT DROPDOWN OPTIONS
   public yDataList = [
-    { label: 'test1', value: 'test1' },
+    { label: 'Total UPB', value: 'totalUPB' },
     { label: 'test2', value: 'test2' },
     { label: 'test3', value: 'test3' },
     { label: 'test4', value: 'test4' },
@@ -76,24 +82,25 @@ export class DataDynamicComponent implements OnInit {
 
   // AG-GRID DATA SETUP
   public columnDefs = [
-    { headerName: 'Loan Number', field: 'loan-number' },
-    { headerName: 'Servicer Name', field: 'servicer-name' },
-    { headerName: 'Seller Name', field: 'seller-name' }
+    { headerName: 'Loan Identifier', field: 'LOANIDENTIFIER' },
+    { headerName: 'Seller Name', field: 'SELLERNAME' },
+    { headerName: 'Servicer Name', field: 'SERVICERNAME' },
+    { headerName: 'Original Interest Rate', field: 'ORIGINALINTERESTRATE' },
+    { headerName: 'Current Interest Rate', field: 'CURRENTINTERESTRATE' },
+    { headerName: 'Original Loan To Value Ratio (LTV)', field: 'ORIGINALLOANTOVALUERATIO' },
+    { headerName: 'Original Combined Loan to Value Ratio (CLTV)', field: 'ORIGINALCOMBINEDLOANTOVALUERATIO' },
+    { headerName: 'Total Principal Current', field: 'TOTALPRINCIPALCURRENT' }
   ];
 
-  public rowData = [
-    { 'loan-number': '1111111', 'servicer-name': 'Fannie Mae', 'seller-name': 'Wells Fargo' },
-    { 'loan-number': '2222222', 'servicer-name': 'Fannie Mae', 'seller-name': 'JP Morgan' },
-    { 'loan-number': '3333333', 'servicer-name': 'Fannie Mae', 'seller-name': 'Goldman Sachs' },
-  ];
+  public rowData;
 
-  public rowDataArray = [];
+  public totalUPB;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     // this.selectedX = 'test1';
-    this.selectedY = 'test1';
+    this.selectedY = 'totalUPB';
 
     // this.http.get('../../assets/resources/files/CIRT_2018-8_122018.csv', { responseType: 'text' }).subscribe(data =>{
     //   console.log(data);
@@ -105,6 +112,33 @@ export class DataDynamicComponent implements OnInit {
     //   });
     //   console.log(this.rowDataArray);
     // });
+
+    this.http.get('http://localhost:5000/creditrisk/fetchLGTime').subscribe(
+      (resp: Label[]) => {
+      console.log('Graph time resposne', resp);
+      this.lineChartLabels = resp;
+    }, error => {
+      console.log("ERROR when /creditrisk/fetchLGTime");
+      this.lineChartLabels = mockTimeData;
+    });
+
+    this.http.get('http://localhost:5000/creditrisk/deals-agg').subscribe(response => {
+      console.log('Y data resposne', response);
+      const responseValues = Object.values(response);
+      this.totalUPB = responseValues;
+    }, error => {
+      console.log("ERROR when /creditrisk/deals-agg");
+      this.totalUPB = mockTest1Data;
+    });
+
+    this.http.get('http://localhost:5000/creditrisk/column-fetch?column1=LOAN IDENTIFIER&column2=SELLER NAME&column3=SERVICER NAME&column4=ORIGINAL INTEREST RATE&column5=CURRENT INTEREST RATE&column6=ORIGINAL LOAN TO VALUE RATIO (LTV)&column7=ORIGINAL COMBINED LOAN TO VALUE RATIO (CLTV)')
+    .subscribe((response: any[]) => {
+      console.log("Column Response", response);
+      this.rowData = response;
+    }, error => {
+      console.log("ERROR when /creditrisk/column-fetch");
+      this.rowData = mockRowData;
+    });
   }
 
   // LINE CHART EVENTS FUNCTIONS
@@ -158,10 +192,10 @@ export class DataDynamicComponent implements OnInit {
   public selectionChangeY(event: MatSelectChange) {
     console.log("Y selection changed", event);
     switch(event.value) {
-      case 'test1': {
+      case 'totalUPB': {
         this.lineChartData = [{
-          data: mockTest1Data,
-          label: 'test1',
+          data: this.totalUPB,
+          label: 'total UPB',
         }];
         break;
       }
