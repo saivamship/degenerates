@@ -1,21 +1,58 @@
+.background {
+  text-align: center;
 
-.background{
-
-    // background: url('../../assets/house1.jpg') no-repeat center center fixed; 
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../../assets/house1.jpg') no-repeat center center fixed;
-   
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height:1000px;
-    position: fixed;
-    width: 100%;
+  &__title {
+    margin-top: 3%;
+  }
 }
 
-.footer{
-    background-color: green;
-    height:20px;
-    position: fixed;
-    bottom: 0;
+.cards-row {
+  display: flex;
+
+  &__card-left {
+    text-align: center;
+    float: right;
+    opacity: .3;
+  }
+
+  &__card-right {
+    float: left;
+    text-align: center;
+    opacity: .3;
+
+  }
+
+  &__card-left:hover {
+    text-align: center;
+    float: right;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  &__card-right:hover {
+    float: left;
+    text-align: center;
+    opacity: 1;
+    cursor: pointer;
+  }
 }
+
+img {
+  margin: 4px 4px 4px 4px;
+}
+
+footer {
+  color: #ffffff;
+  position: fixed;
+  bottom: 0px;
+  text-align: center;
+  width: 100%;
+  background-color: #05314d;
+}
+
+.menus {
+  font-size: 10px;
+  font-weight: 100;
+  padding-top: 7px;
+}
+
