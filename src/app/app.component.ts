@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,7 @@ export class AppComponent {
   @ViewChild('lineChart') private chartRef;    
   chart: any;
 
+  constructor(private router: Router){
+
+  }
 }

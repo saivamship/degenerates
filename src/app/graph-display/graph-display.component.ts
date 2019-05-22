@@ -16,7 +16,6 @@ export class GraphDisplayComponent implements OnInit {
   // tabs: any = [];
   ngOnInit() {
 
-    console.log("in the list", this.store.fileList)
 
     if (this.store.fileList) {
 

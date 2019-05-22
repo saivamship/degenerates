@@ -32,69 +32,68 @@ export class LgpubComponent implements OnInit {
 
   public loanPerformancePayload = [
     {
-      statName: 'Average Stat',
+      statName: 'Average Delinquent Loans',
       statValue: '0.35%',
       statUpdate: 'since last month',
       statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
     },
     {
       statName: 'Foreclosure Costs',
-      statValue: '21',
-      statUpdate: '(5% up from Q2)',
+      statValue: '$12,304',
+      statUpdate: '(2.3% up from Q2)',
       statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
     },
     {
       statName: 'Net Sales Proceeds',
-      statValue: '23',
-      statUpdate: '(5% up from Q2)',
-      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
-
-    },
-    {
-      statName: 'Net Sales Proceeds',
-      statValue: '3',
+      statValue: '$45,294',
       statUpdate: '(5% up from Q2)',
       statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
 
     },
     {
-      statName: 'Net Sales Proceeds',
-      statValue: '94',
+      statName: 'Property Pres...',
+      statValue: '$37,293',
       statUpdate: '(5% up from Q2)',
       statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
 
     },
     {
-      statName: 'Net Sales Proceeds',
-      statValue: '32',
+      statName: 'Assest Recov...',
+      statValue: '$94,283',
+      statUpdate: '(2% up from Q2)',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+
+    },
+    {
+      statName: 'Miscellaneous Holding...',
+      statValue: '$12,321',
+      statUpdate: '(1% up from Q2)',
+      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
+
+    },
+    {
+      statName: 'Associated Taxes for...',
+      statValue: '$1,028',
       statUpdate: '(5% up from Q2)',
       statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
 
     },
     {
-      statName: 'Net Sales Proceeds',
-      statValue: '54',
-      statUpdate: '(5% up from Q2)',
-      statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
-
-    },
-    {
-      statName: 'Net Sales Proceeds',
-      statValue: '.067%',
+      statName: 'Credit Enhancements ...',
+      statValue: '+.067%',
       statUpdate: '(5% up from Q2)',
       statMonthIncrements: [32, 21, 23, 32, 33, 36, 38, 43, 46, 93]
     },
     {
-      statName: 'Net Sales Proceeds',
-      statValue: '5',
+      statName: 'Other Foreclosu...',
+      statValue: '$23,123',
       statUpdate: '(5% up from Q2)',
       statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
-
     },
     {
-      statName: 'Net Sales Proceeds',
-      statValue: '5',
-      statUpdate: '(5% up from Q2)',
+      statName: 'Principle Forgiven...',
+      statValue: '2.3%',
+      statUpdate: '(.05% up from Q2)',
       statMonthIncrements: [40, 45, 50, 52, 56, 54, 57, 61, 56, 57]
     },
   ];

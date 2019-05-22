@@ -1,39 +1,40 @@
-<div class="ui-g">
-  <div class="ui-g-4" style="text-align: center">
-    <a (click)="handleBack()" routerLink="/graph-display" class="back-text">
-      ← Go Back </a>
+
+<div style="background-color: #f8f8f8; position:relative;   border: 1px solid #DBDBDB;width: 60%; margin: 50px auto; min-height:500px; border-radius: 10px;padding:40px;">
+  <br>
+  <a (click)="handleBack()" style="position: relative; left: 10%;" class="back-text">
+    ← Go Back </a>
+  <h2 style="text-align: center;"> Submit Data</h2>
+  <div class="ui-g" style="margin-top:30px;text-align: left;">
+    <form [formGroup]="userForm">
+      <div class="ui-g-6">
+        <label>First Name: </label>
+        <input style="width: 100%;" formControlName="firstName" pInputText>
+      </div>
+      <div class="ui-g-6">
+        <label> Last Name: </label>
+        <input type="text" style="width:100%;" formControlName="lastName" pInputText>
+      </div>
+      <div class="ui-g-6">
+        <label> Title: </label>
+        <input type="text" style="width:100%;" formControlName="fileName" pInputText>
+      </div>
+      <div class="ui-g-6">
+        <label> Comment: </label>
+        <input type="text" style="width:100%;" formControlName="comment" pInputText>
+      </div>
+      <div class="ui-g-12" style="margin-top:50;">
+        <p-fileUpload customUpload="true" (uploadHandler)="onUpload($event)" name="myfile[]" url="./upload.php">
+        </p-fileUpload>
+      </div>
+      <div *ngIf="uploadedFiles.length>0" class="ui-g-12">
+        <p> These are the files you plan on uploading: </p>
+        <div *ngFor="let file of uploadedFiles">
+          {{file.name}}
+        </div>
+      </div>
+      <div class="ui-g-12" style="text-align: right">
+        <button mat-stroked-button type="submit" (click)="submit()">Submit</button>
+      </div>
+    </form>
   </div>
-  <div class="ui-g-4">
-    <h2 style="text-align: center;"> Submit Data</h2>
-  </div>
-  <div class="ui-g-4">
-  </div>
-  <form [formGroup]=" userForm">
-    <p>First Name:</p>
-    <input type="text" formControlName="firstName" pInputText>
-    Last Name:
-    <input type="text" formControlName="lastName" pInputText>
-
-    Title
-    <input type="text" formControlName="lastName" pInputText>
-
-    <br>
-    <br>
-    <p-fileUpload customUpload="true" (uploadHandler)="onUpload($event)" name="myfile[]" url="./upload.php">
-    </p-fileUpload>
-
-    <!-- <button type="submit" (click)="Submit()" [disabled]="!userForm.valid">Submit</button> -->
-    <button mat-stroked-button type="submit" (click)="Submit()" [disabled]="!userForm.valid">Basic</button>
-  </form>
-  <div *ngIf="uploadedFiles">
-    <p> These are the files you plan on uploading. </p>
-  </div>
-
-  <div *ngFor="let file of uploadedFiles">
-    {{file.name}}
-
-
-  </div>
-
-
 </div>

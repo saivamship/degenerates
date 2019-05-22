@@ -1,7 +1,4 @@
 <mat-tab-group>
-    <!-- <mat-tab label="Home">
-     <app-home></app-home>
-    </mat-tab> -->
     <mat-tab label="LPBUB">
         <app-lgpub></app-lgpub>
     </mat-tab>
@@ -11,14 +8,10 @@
     <mat-tab label="Download">
         <app-download></app-download>
     </mat-tab>
-    <mat-tab label="Submit Data">
-        <app-upload></app-upload>
-    </mat-tab>
 
-    <mat-tab *ngFor="let tab of tabs;let i = index;" label="{{tabs[i]}}">
+    <mat-tab *ngFor="let file of tabs; let i =
+    index;" label="{{tabs[i]}}">
 
-    </mat-tab>
-    <mat-tab *ngIf="nancy" label="si">
-
+        <app-mock-data></app-mock-data>
     </mat-tab>
 </mat-tab-group>

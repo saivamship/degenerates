@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseChartDirective, Label, Color } from 'ng2-charts';
 import { MatSelectChange } from '@angular/material';
+import { AgGridNg2 } from 'ag-grid-angular';
 
 const mockTimeData = [
   'Jan 2017',
@@ -16,10 +17,54 @@ const mockTimeData = [
   'Apr 2018'
 ];
 
-const mockTest1Data = [65, 59, 80, 81, 56, 55, 40, 42, 78, 82];
-const mockTest2Data = [23, 34, 30, 91, 98, 55, 35, 8, 14, 72];
+const mockTest1Data = [
+  16988605373,
+  15321053731,
+  14691352555,
+  13413482555,
+  11478216540,
+  11060459029,
+  10929616298,
+  9453556487,
+  8743556487,
+  7833556487
+];
+const mockTest2Data = [5, 3, 4, 4, 7, 55, 35, 8, 14, 72];
 const mockTest3Data = [22, 95, 92, 67, 11, 95, 6, 31, 84, 8];
 const mockTest4Data = [43, 60, 58, 70, 6, 55, 70, 71, 49, 95];
+
+const mockRowData = [
+  {
+    LOANIDENTIFIER: '37262251',
+    SELLERNAME: 'Fannie Mae',
+    SERVICERNAME: '',
+    ORIGINALINTERESTRATE: '3.8750',
+    CURRENTINTERESTRATE: '',
+    ORIGINALLOANTOVALUERATIO: '80',
+    ORIGINALCOMBINEDLOANTOVALUERATIO: '80',
+    TOTALPRINCIPALCURRENT: '44454.27'
+  },
+  {
+    LOANIDENTIFIER: '37262252',
+    SELLERNAME: 'Fannie Mae',
+    SERVICERNAME: '',
+    ORIGINALINTERESTRATE: '3.8750',
+    CURRENTINTERESTRATE: '',
+    ORIGINALLOANTOVALUERATIO: '80',
+    ORIGINALCOMBINEDLOANTOVALUERATIO: '80',
+    TOTALPRINCIPALCURRENT: '44454.27'
+  },
+  {
+    LOANIDENTIFIER: '37262253',
+    SELLERNAME: 'Fannie Mae',
+    SERVICERNAME: '',
+    ORIGINALINTERESTRATE: '3.8750',
+    CURRENTINTERESTRATE: '',
+    ORIGINALLOANTOVALUERATIO: '80',
+    ORIGINALCOMBINEDLOANTOVALUERATIO: '80',
+    TOTALPRINCIPALCURRENT: '44454.27'
+  }
+];
 
 @Component({
   selector: 'app-data-dynamic',
@@ -28,12 +73,19 @@ const mockTest4Data = [43, 60, 58, 70, 6, 55, 70, 71, 49, 95];
 })
 export class DataDynamicComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
+  @ViewChild('agGrid') agGrid: AgGridNg2;
+
+  public rowData;
+
+  public totalUPB;
+
+  public UPBDelta;
 
   // LINE CHART DATA SETUP
   public lineChartData: Chart.ChartDataSets[] = [
-    { data: mockTest1Data, label: 'test1' }
+    { data: this.totalUPB, label: 'Total UPB' }
   ];
-  public lineChartLabels: Label[] = mockTimeData;
+  public lineChartLabels: Label[];
   public lineChartOptions: Chart.ChartOptions = {
     responsive: false,
     scales: {
@@ -43,7 +95,8 @@ export class DataDynamicComponent implements OnInit {
     }
   };
   public lineChartColors: Color[] = [
-    { // red
+    {
+      // red
       backgroundColor: 'rgb(0, 172, 220, 0.1)',
       borderColor: '#007697',
       pointBackgroundColor: 'rgba(148,159,177,1)',
@@ -67,65 +120,108 @@ export class DataDynamicComponent implements OnInit {
 
   // Y-AXIS SELECT DROPDOWN OPTIONS
   public yDataList = [
-    { label: 'test1', value: 'test1' },
-    { label: 'test2', value: 'test2' },
-    { label: 'test3', value: 'test3' },
-    { label: 'test4', value: 'test4' },
+    { label: 'Total UPB', value: 'totalUPB' },
+    { label: 'UPB Delta', value: 'UPBDelta' }
   ];
   public selectedY;
 
   // AG-GRID DATA SETUP
   public columnDefs = [
-    { headerName: 'Loan Number', field: 'loan-number' },
-    { headerName: 'Servicer Name', field: 'servicer-name' },
-    { headerName: 'Seller Name', field: 'seller-name' }
+    {
+      headerName: 'Loan Identifier',
+      field: 'LOANIDENTIFIER',
+      suppressSizeToFit: false
+    },
+    {
+      headerName: 'Deal Id',
+      field: 'REFERENCEPOOLID',
+      suppressSizeToFit: false
+    },
+    {
+      headerName: 'Seller Name',
+      field: 'SELLERNAME',
+      suppressSizeToFit: false
+    },
+    {
+      headerName: 'Servicer Name',
+      field: 'SERVICERNAME',
+      suppressSizeToFit: false
+    },
+    {
+      headerName: 'Original Interest Rate',
+      field: 'ORIGINALINTERESTRATE',
+      suppressSizeToFit: false
+    },
+    {
+      headerName: 'Current Interest Rate',
+      field: 'CURRENTINTERESTRATE',
+      suppressSizeToFit: false
+    },
+    {
+      headerName: 'Original Loan To Value Ratio (LTV)',
+      field: 'ORIGINALLOANTOVALUERATIO(LTV)',
+      suppressSizeToFit: false
+    }
   ];
-
-  public rowData = [
-    { 'loan-number': '1111111', 'servicer-name': 'Fannie Mae', 'seller-name': 'Wells Fargo' },
-    { 'loan-number': '2222222', 'servicer-name': 'Fannie Mae', 'seller-name': 'JP Morgan' },
-    { 'loan-number': '3333333', 'servicer-name': 'Fannie Mae', 'seller-name': 'Goldman Sachs' },
-  ];
-
-  public rowDataArray = [];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     // this.selectedX = 'test1';
-    this.selectedY = 'test1';
+    // this.selectedY = 'totalUPB';
 
-    // this.http.get('../../assets/resources/files/CIRT_2018-8_122018.csv', { responseType: 'text' }).subscribe(data =>{
-    //   console.log(data);
-    //   const lineData = data.split(/[\r\n]+/);
-    //   const lineDataSplice = lineData.splice(0, 300);
-    //   lineDataSplice.forEach(line => {
-    //     const fieldData = line.split('|');
-    //     this.rowDataArray.push(fieldData);
-    //   });
-    //   console.log(this.rowDataArray);
-    // });
-  }
+    this.http.get('http://localhost:5000/creditrisk/fetchLGTime').subscribe(
+      (resp: Label[]) => {
+        console.log('Graph time resposne', resp);
+        this.lineChartLabels = resp;
+      },
+      error => {
+        console.log('ERROR when /creditrisk/fetchLGTime');
+        this.lineChartLabels = mockTimeData;
+      }
+    );
 
-  // LINE CHART EVENTS FUNCTIONS
-  public chartClicked({
-      event,
-      active
-    }: {
-      event: MouseEvent;
-      active: {}[];
-    }): void {
-      console.log(event, active);
-  }
+    this.http.get('http://localhost:5000/creditrisk/deals-agg').subscribe(
+      (response: any) => {
+        console.log('Y data response', response);
+        this.totalUPB = Object.values(JSON.parse(response));
+        console.log('On Call' + this.totalUPB);
+      },
+      error => {
+        console.log('ERROR when /creditrisk/deals-agg');
+        this.totalUPB = mockTest1Data;
+      }
+    );
 
-  public chartHovered({
-      event,
-      active
-    }: {
-      event: MouseEvent;
-      active: {}[];
-    }): void {
-      console.log(event, active);
+    this.http
+      .get('http://localhost:5000/creditrisk/deals-percent-agg')
+      .subscribe(
+        (response: any) => {
+          console.log('Y data response', response);
+          this.UPBDelta = Object.values(JSON.parse(response));
+          console.log('On Call' + this.UPBDelta);
+        },
+        error => {
+          console.log('ERROR when /creditrisk/deals-percent-agg');
+          this.UPBDelta = mockTest2Data;
+        }
+      );
+
+    this.http
+      .get(
+        'http://localhost:5000/creditrisk/column-fetch?column1=LOANIDENTIFIER&column2=SELLERNAME&column3=SERVICERNAME&column4=ORIGINALINTERESTRATE&column5=CURRENTINTERESTRATE&column6=ORIGINALLOANTOVALUERATIO(LTV)&column7=REFERENCEPOOLID'
+      )
+      .subscribe(
+        (response: any) => {
+          console.log('Column Response', response);
+          this.rowData = Object.values(JSON.parse(response));
+          this.agGrid.api.sizeColumnsToFit();
+        },
+        error => {
+          console.log('ERROR when /creditrisk/column-fetch');
+          this.rowData = mockRowData;
+        }
+      );
   }
 
   // Dropdown Selection Change Event Functions
@@ -156,36 +252,45 @@ export class DataDynamicComponent implements OnInit {
   // }
 
   public selectionChangeY(event: MatSelectChange) {
-    console.log("Y selection changed", event);
-    switch(event.value) {
-      case 'test1': {
-        this.lineChartData = [{
-          data: mockTest1Data,
-          label: 'test1',
-        }];
+    console.log('Y selection changed', event);
+    console.log(this.totalUPB);
+    console.log(this.UPBDelta);
+    switch (event.value) {
+      case 'totalUPB': {
+        this.lineChartData = [
+          {
+            data: this.totalUPB,
+            label: 'Total UPB'
+          }
+        ];
         break;
       }
-      case 'test2': {
-        this.lineChartData = [{
-          data: mockTest2Data,
-          label: 'test2',
-        }];
-        break;
-      }
-      case 'test3': {
-        this.lineChartData = [{
-          data: mockTest3Data,
-          label: 'test3',
-        }];
-        break;
-      }
-      case 'test4': {
-        this.lineChartData = [{
-          data: mockTest4Data,
-          label: 'test4',
-        }];
+      case 'UPBDelta': {
+        this.lineChartData = [
+          {
+            data: this.UPBDelta,
+            label: 'UPB Delta'
+          }
+        ];
         break;
       }
     }
   }
+
+  // LINE CHART EVENTS FUNCTIONS
+  public chartClicked({
+    event,
+    active
+  }: {
+    event: MouseEvent;
+    active: {}[];
+  }): void {}
+
+  public chartHovered({
+    event,
+    active
+  }: {
+    event: MouseEvent;
+    active: {}[];
+  }): void {}
 }

@@ -15,52 +15,40 @@ export class AdminComponent implements OnInit {
 
   uploadedFiles: any[] = [];
   index: number = 0;
-  private items: MenuItem[];
+  buttonDisabled: boolean = false;
+
 
   constructor(private fb: FormBuilder, private router: Router, private storeService: StoreService) { }
+
   userForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    fileName: ['']
+    fileName: ['', Validators.required],
+    comment: ['']
   });
+
   ngOnInit() {
-    this.items = [{
-      label: 'File',
-      items: [
-        { label: 'New', icon: 'fa fa-plus' },
-        { label: 'Open', icon: 'fa fa-download' }
-      ]
-    },
-    {
-      label: 'Edit',
-      items: [
-        { label: 'Undo', icon: 'fa fa-refresh' },
-        { label: 'Redo', icon: 'fa fa-repeat' }
-      ]
-    }];
 
   }
 
+  handleBack() {
+    this.router.navigate(['/graph-display'])
+  }
 
   onUpload(event) {
+    this.buttonDisabled = false;
     for (let file of event.files) {
       this.uploadedFiles.push(file);
       this.storeService.fileList.push(file.name)
     }
   }
 
-
-
-  Submit() {
+  submit() {
     this.storeService.fileList = this.uploadedFiles;
-
-    this.router.navigate(['/graph-display'])
+       this.router.navigate(['/graph-display'])
   }
 
 
-  ngOnDestroy() {
-    // this.storeService.fileList = null;
-  }
 }
 
 

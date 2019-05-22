@@ -1,3 +1,24 @@
-<p>
-  mock-data works!
-</p>
+<div class="data-dynamic-container">
+    <div class="canvas-container" style="display: block; margin-top:25px;">
+      <canvas baseChart width="1080" height="300" [datasets]="lineChartData" [labels]="lineChartLabels"
+        [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"
+        (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+  
+    <div class='axis-select-container'>
+    
+      <mat-form-field>
+        <mat-label>Value in Y-Axis</mat-label>
+        <mat-select [(value)]="selectedY" (selectionChange)="selectionChangeY($event)">
+          <mat-option *ngFor="let data of yDataList" [value]="data.value">
+            {{data.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      
+  
+    </div>
+  
+  </div>
